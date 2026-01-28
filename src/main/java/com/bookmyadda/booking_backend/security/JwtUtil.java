@@ -7,7 +7,7 @@ import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 import java.util.Date;
 
-public class JWTUtil {
+public class JwtUtil {
     private static final String SECRET =
             "THIS_IS_A_VERY_LONG_SECRET_KEY_FOR_HS256_DO_NOT_SHORTEN";
 
