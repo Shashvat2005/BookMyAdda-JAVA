@@ -6,6 +6,8 @@ import com.bookmyadda.booking_backend.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -22,8 +24,13 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequestDTO loginRequestDTO) {
+    public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequestDTO loginRequestDTO) {
         String token = authService.login(loginRequestDTO);
-        return ResponseEntity.ok(token);
+        return ResponseEntity.ok(
+                Map.of(
+                        "token", token
+                )
+        );
+//        return ResponseEntity.ok(token);
     }
 }
