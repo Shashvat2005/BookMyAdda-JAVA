@@ -1,5 +1,20 @@
-FROM openjdk:17-jdk-slim
+# Use modern Java image
+FROM eclipse-temurin:17-jdk
+
+# Set working directory
 WORKDIR /app
-COPY target/*.jar app.jar
+
+# Copy project files
+COPY . .
+
+# Give permission to mvnw
+RUN chmod +x mvnw
+
+# Build the application
+RUN ./mvnw clean package -DskipTests
+
+# Expose port (Render uses dynamic port)
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+
+# Run the app
+CMD ["sh", "-c", "java -jar target/*.jar"]
