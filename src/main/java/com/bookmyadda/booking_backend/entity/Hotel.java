@@ -2,9 +2,9 @@ package com.bookmyadda.booking_backend.entity;
 
 import java.util.List;
 
-public class Hotel {
+public class Hotel {           //identification
+    private String name;
     private int id;                         //identification
-    private String name;                    //identification
     private List<String> images;            //required
     private List<String> amenities;         //required
     private int pricePerNight;              //required

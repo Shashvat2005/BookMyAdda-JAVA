@@ -1,11 +1,11 @@
 package com.bookmyadda.booking_backend.entity;
 
+import com.bookmyadda.booking_backend.Enum.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.aot.generate.GeneratedTypeReference;
 
 @Entity
 @Table(name="users")

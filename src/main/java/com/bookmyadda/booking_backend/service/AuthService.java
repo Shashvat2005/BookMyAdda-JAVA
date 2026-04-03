@@ -2,7 +2,7 @@ package com.bookmyadda.booking_backend.service;
 
 import com.bookmyadda.booking_backend.dto.LoginRequestDTO;
 import com.bookmyadda.booking_backend.dto.RegisterRequestDTO;
-import com.bookmyadda.booking_backend.entity.Role;
+import com.bookmyadda.booking_backend.Enum.Role;
 import com.bookmyadda.booking_backend.entity.User;
 import com.bookmyadda.booking_backend.repository.UserRepository;
 import com.bookmyadda.booking_backend.security.JwtUtil;
