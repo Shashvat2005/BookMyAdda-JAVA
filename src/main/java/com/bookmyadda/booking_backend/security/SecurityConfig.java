@@ -42,7 +42,7 @@ public class SecurityConfig {
                                 "/test",
                                 "/auth/**",
                                 "/error",
-                                "/api/properties/**"
+                                "/api/**"
                         ).permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
