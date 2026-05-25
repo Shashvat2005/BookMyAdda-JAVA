@@ -20,8 +20,13 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterRequestDTO registerRequestDTO) {
-        authService.register(registerRequestDTO);
-        return ResponseEntity.ok("User registered successfully");
+        try {
+            authService.register(registerRequestDTO);
+            return ResponseEntity.ok("User registered successfully");
+        } catch (RuntimeException e){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(e.getMessage());
+        }
     }
 
     @PostMapping("/login")
