@@ -19,13 +19,26 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequestDTO registerRequestDTO) {
+    public ResponseEntity<Map<String, String>> register(
+            @RequestBody RegisterRequestDTO registerRequestDTO
+    ) {
         try {
             authService.register(registerRequestDTO);
-            return ResponseEntity.ok("User registered successfully");
+
+            return ResponseEntity.ok(
+                    Map.of(
+                            "message", "User registered successfully"
+                    )
+            );
+
         } catch (RuntimeException e){
+
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(e.getMessage());
+                    .body(
+                            Map.of(
+                                    "error", e.getMessage()
+                            )
+                    );
         }
     }
 
