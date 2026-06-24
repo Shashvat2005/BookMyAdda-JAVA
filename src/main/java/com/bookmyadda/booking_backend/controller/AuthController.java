@@ -44,6 +44,8 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequestDTO loginRequestDTO) {
+        System.out.println(loginRequestDTO.getEmail());
+        System.out.println(loginRequestDTO.getPassword());
         try {
             String token = authService.login(loginRequestDTO);
             return ResponseEntity.ok(

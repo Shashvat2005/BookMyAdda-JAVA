@@ -1,20 +1,9 @@
-# Use modern Java image
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:21-jre
 
-# Set working directory
 WORKDIR /app
 
-# Copy project files
-COPY . .
+COPY target/*.jar app.jar
 
-# Give permission to mvnw
-RUN chmod +x mvnw
+EXPOSE 7860
 
-# Build the application
-RUN ./mvnw clean package -DskipTests
-
-# Expose port (Render uses dynamic port)
-EXPOSE 8080
-
-# Run the app
-CMD ["sh", "-c", "java -jar target/*.jar"]
+CMD ["java", "-jar", "app.jar", "--server.port=7860"]
