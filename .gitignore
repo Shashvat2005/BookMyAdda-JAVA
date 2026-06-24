@@ -33,4 +33,4 @@ build/
 .vscode/
 
 target/
-*.jar
+*.jartarget/
