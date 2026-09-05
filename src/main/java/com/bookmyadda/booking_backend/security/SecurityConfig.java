@@ -1,6 +1,7 @@
 package com.bookmyadda.booking_backend.security;
 
 import jakarta.annotation.PostConstruct;
+import org.springframework.http.HttpMethod;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -38,14 +39,14 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/hotels/demo",
-                                "/test",
                                 "/auth/**",
                                 "/error",
-                                "/api/**"
+                                "/test"
                         ).permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/properties/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/**").authenticated()
                         .anyRequest()
                         .authenticated()
                 ).addFilterBefore(
